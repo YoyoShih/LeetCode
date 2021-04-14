@@ -1,12 +1,15 @@
 // Best
 var twoSum = function(nums, target) {
-    let result = {}
-    for(let i=0;i<nums.length;i++){
-        if (result[nums[i]] >= 0) {
-            return [result[nums[i]], i]
+    const m = new Map()
+    let result
+    nums.forEach((item, index) => {
+        let indValue = target - item
+        if(m.has(indValue)){
+            result = [m.get(indValue), index]
         }
-        result[target-nums[i]] = i
-    }
+        m.set(item, index)
+    })
+    return result
 };
 
 //  2021/04/13 My solve
@@ -53,11 +56,29 @@ var twoSum = function(nums, target) {
 //  using map   ***BEST***
 //  speed: 3, memo: 3, clean: 4
 var twoSum = function(nums, target) {
-    let result = {}
-    for(let i=0;i<nums.length;i++){
-        if (result[nums[i]] >= 0) {
-            return [result[nums[i]], i]
+    const m = new Map()
+    let result
+    nums.forEach((item, index) => {
+        let indValue = target - item
+        if(m.has(indValue)){
+            result = [m.get(indValue), index]
         }
-        result[target-nums[i]] = i
-    }
+        m.set(item, index)
+    })
+    return result
+};
+
+//  using typeof/hasOwnProperty for obj
+var twoSum = function(nums, target) {
+    const map = {}
+    let result
+    nums.forEach((item, index) => {
+        let indValue = target - item
+        // or if(map.hasOwnProperty(indValue))
+        if (typeof map[indValue] !== 'undefined') {
+            result = [map[indValue], index]
+        }
+        map[item] = index
+    })
+    return result
 };
