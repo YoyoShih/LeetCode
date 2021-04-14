@@ -13,7 +13,7 @@ var twoSum = function(nums, target) {
 };
 
 //  2021/04/13 My solve
-//  speed: 3, memo: 2, clean: 0
+//  speed: 3, memo: 2, clean: 1
 var twoSum = function(nums, target) {
     let gap_value = [], result = []
     for(let i=0;i<nums.length;i++){
@@ -24,20 +24,6 @@ var twoSum = function(nums, target) {
             result.push(gap_value.indexOf(nums[i]),i)
             return result
         }
-    }
-};
-
-//  speed: 3, memo: 2, clean: 1
-var twoSum = function(nums, target) {
-    let gap_value = [], result = []
-    for(let i=0;i<nums.length;i++){
-        gap_value.push(target - nums[i])
-        for(let i=0;i<nums.length;i++){
-        if(gap_value.includes(nums[i]) && gap_value.indexOf(nums[i]) !== i){
-            result.push(gap_value.indexOf(nums[i]),i)
-            return result
-        }
-    }
     }
 };
 
@@ -69,6 +55,7 @@ var twoSum = function(nums, target) {
 };
 
 //  using typeof/hasOwnProperty for obj
+//  speed: 3, memo: 3, clean: 4
 var twoSum = function(nums, target) {
     const map = {}
     let result
